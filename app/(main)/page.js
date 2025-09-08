@@ -2,6 +2,7 @@ import ImageSlider from '@/components/ImageSlider';
 import React from 'react';
 import AutoSlider from "@/components/AutoSlider";
 import ProductCard from "@/components/ProductCard";
+import BottomNavbar from "@/components/Navbar/NavbarBottom";
 
 function Home() {
   const images = [
@@ -32,9 +33,9 @@ function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 pb-16">
       {/* Category Slider */}
-      <div className='w-full mt-5'>
+      <div className="pt-22 md:pt-4">
         <ImageSlider images={images} itemsPerView={4} />
       </div>
 
@@ -44,7 +45,7 @@ function Home() {
       </div>
 
       {/* Products Section */}
-      <div className="px-4 py-6">
+      <div className="py-6">
         <h2 className="text-xl font-bold text-gray-900 mb-4">Fresh Products</h2>
 
         {/* Responsive Products Grid - Fewer columns for wider cards */}
@@ -54,8 +55,9 @@ function Home() {
           ))}
         </div>
       </div>
+      <BottomNavbar />
     </div>
   );
 }
 
-export default Home;
+export default Home; 
