@@ -1,13 +1,12 @@
 export default function ProductCard({ product }) {
   return (
     <div
-      className="bg-white border border-gray-200 rounded-md shadow-sm 
-      p-2 sm:p-3 hover:shadow-md transition-shadow duration-200 
-      flex flex-col min-w-0 w-full max-w-[180px] sm:max-w-[200px]">
-      {/* Image */}
+      className="flex flex-col min-w-0 w-full max-w-[180px] sm:max-w-[200px] 
+      transition-shadow duration-200 hover:shadow-md rounded-md p-2 sm:p-3">
+      {/* Image Box with Border */}
       <div
         className="relative w-full h-40 sm:h-36 flex items-center justify-center 
-        bg-gray-50 rounded-md overflow-hidden mb-2">
+        bg-gray-50 border border-gray-200 rounded-md overflow-hidden mb-2">
         <img
           src={product.image}
           alt={product.name}
