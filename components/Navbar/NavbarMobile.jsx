@@ -45,7 +45,7 @@ export default function NavbarMobile({ navitems }) {
           <Link
             key={item.name}
             href={`categories/${item.link}`}
-            className="flex items-center gap-1 font-medium hover:text-green-600">
+            className="flex items-center gap-1 font-medium hover:text-green-600 whitespace-nowrap">
             <item.icon className="w-4 h-4" />
             {item.name}
           </Link>
