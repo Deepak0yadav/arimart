@@ -2,6 +2,7 @@ import React from 'react';
 import AutoSlider from "@/components/AutoSlider";
 import BottomNavbar from "@/components/Navbar/NavbarBottom";
 import ProductSection from "@/components/product/ProductSection";
+import ShopByCategory from '@/components/ShopBycategory';
 
 function Home() {
   const banners = [
@@ -75,6 +76,8 @@ function Home() {
       </div>
 
       {/* Sections */}
+      <ShopByCategory/>
+
       <ProductSection
         title="Grocery"
         products={freshProducts}
