@@ -42,7 +42,10 @@ export default function NavbarDesktop({ navitems }) {
             </button>
             {userMenuOpen && (
               <div className="absolute right-0 mt-2 w-40 rounded-md border bg-white shadow-md">
-                <Link href="/login" className="block px-4 py-2 hover:bg-gray-100">
+                <Link
+                  href="/login"
+                  className="block px-4 py-2 hover:bg-gray-100"
+                >
                   Login
                 </Link>
                 <Link
@@ -62,12 +65,15 @@ export default function NavbarDesktop({ navitems }) {
           </div>
 
           {/* Cart */}
-          <button className="relative p-2 rounded-full hover:bg-gray-100">
+          <Link
+            href="/cart"
+            className="relative p-2 rounded-full hover:bg-gray-100"
+          >
             <ShoppingCart className="h-7 w-7 text-gray-800" />
             <span className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center rounded-full bg-red-500 text-[11px] font-bold text-white">
               2
             </span>
-          </button>
+          </Link>
         </div>
       </div>
 
