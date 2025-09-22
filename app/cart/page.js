@@ -82,7 +82,7 @@ export default function CartPage() {
               <ShoppingCart size={32} className="text-gray-400" />
             </div>
             <h2 className="text-2xl font-semibold text-gray-900 mb-2">Your cart is empty</h2>
-            <p className="text-gray-600 mb-6">Looks like you haven't added any items to your cart yet.</p>
+            <p className="text-gray-600 mb-6">Looks like you haven&apos;t added any items to your cart yet.</p>
             <button
               onClick={handleContinueShopping}
               className="text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200"

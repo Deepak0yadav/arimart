@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Heart, Share2, ShoppingCart, Star, Truck, Shield, ArrowLeft, Plus, Minus } from "lucide-react";
+import Image from "next/image";
 
 export default function ProductDetails({ params }) {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
@@ -128,7 +129,7 @@ export default function ProductDetails({ params }) {
           {/* LEFT SIDE: IMAGE GALLERY */}
           <div className="space-y-4">
             <div className="relative bg-white rounded-xl shadow-lg overflow-hidden">
-              <img
+              <Image
                 src={finalProduct.images[selectedImageIndex]}
                 alt={finalProduct.name}
                 className="w-full h-[500px] object-cover"
@@ -151,7 +152,7 @@ export default function ProductDetails({ params }) {
                   }`}
                   style={selectedImageIndex === index ? {borderColor: '#CB7F32'} : {}}
                 >
-                  <img src={image} alt={`View ${index + 1}`} className="w-full h-full object-cover" />
+                  <Image src={image} alt={`View ${index + 1}`} className="w-full h-full object-cover" />
                 </button>
               ))}
             </div>
