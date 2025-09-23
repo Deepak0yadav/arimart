@@ -21,18 +21,18 @@ export default function ProductSection({ title, products, seeMoreLink }) {
       </div>
 
       {/* Mobile Scroll */}
-      <div className="sm:hidden overflow-x-auto flex gap-1 py-1">
+      <div className="sm:hidden overflow-x-auto flex gap-2 py-1">
         {products.map((product) => (
           <div
             key={product.id}
-            className="flex-shrink-0 w-36">
+            className="flex-shrink-0 w-28">
             <ProductCard product={product} />
           </div>
         ))}
       </div>
 
-      {/* Desktop Grid */}
-      <div className="hidden sm:grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-1">
+      {/* Desktop Grid (auto-fit) */}
+      <div className="hidden sm:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-3">
         {displayedProducts.map((product) => (
           <ProductCard
             key={product.id}

@@ -14,7 +14,7 @@ export default function AutoSlider({ images, interval = 3000 }) {
   }, [images.length, interval]);
 
   return (
-    <div className="relative w-full overflow-hidden  shadow-md">
+    <div className="relative w-full overflow-hidden shadow-md z-40">
       {/* Slides */}
       <div
         className="flex transition-transform duration-700 ease-in-out"
@@ -26,7 +26,7 @@ export default function AutoSlider({ images, interval = 3000 }) {
             <img
               src={src}
               alt={`Slide ${index}`}
-              className="w-full h-65 md:h-75 object-cover"
+              className="w-full h-48 sm:h-64 md:h-80 lg:h-96 object-cover"
             />
           </div>
         ))}
