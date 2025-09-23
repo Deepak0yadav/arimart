@@ -7,34 +7,37 @@ export default function ProductSection({ title, products, seeMoreLink }) {
 
   return (
     <section className="py-2">
-      {/* Header */}
-      <div className="flex items-center justify-between mb-2">
-        <h2 className="text-lg sm:text-xl font-bold text-gray-900">{title}</h2>
+      <div className="flex items-center justify-between mb-1">
+        <h2 className="text-base sm:text-lg font-bold text-gray-900">
+          {title}
+        </h2>
         {seeMoreLink && (
           <Link
             href={seeMoreLink}
-            className="text-sm text-green-600 font-medium hover:underline"
-          >
+            className="text-sm text-[#CB7F32] font-medium hover:underline">
             See All
           </Link>
         )}
       </div>
 
-      {/* Mobile Horizontal Scroll */}
-      <div className="sm:hidden">
-        <div className="flex gap-0 overflow-x-auto scrollbar-hide">
-          {products.map((product) => (
-            <div key={product.id} className="flex-shrink-0 w-40">
-              <ProductCard product={product} />
-            </div>
-          ))}
-        </div>
+      {/* Mobile Scroll */}
+      <div className="sm:hidden overflow-x-auto flex gap-1 py-1">
+        {products.map((product) => (
+          <div
+            key={product.id}
+            className="flex-shrink-0 w-36">
+            <ProductCard product={product} />
+          </div>
+        ))}
       </div>
 
       {/* Desktop Grid */}
-      <div className="hidden sm:grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-0">
+      <div className="hidden sm:grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-1">
         {displayedProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard
+            key={product.id}
+            product={product}
+          />
         ))}
       </div>
     </section>
