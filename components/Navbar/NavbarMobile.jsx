@@ -18,7 +18,7 @@ export default function NavbarMobile({ navitems }) {
         <div className="flex items-center gap-4">
           {/* Deals */}
           <Link
-            href="/deals"
+            href="/group-buying"
             className="flex items-center gap-1 text-gray-700 font-semibold hover:text-green-600">
             <Tag className="h-5 w-5" />
             <span className="hidden sm:inline">Deals</span>

@@ -25,7 +25,7 @@ export default function NavbarDesktop({ navitems }) {
         <div className="flex items-center gap-6 relative">
           {/* Deals */}
           <Link
-            href="/deals"
+            href="/group-buying"
             className="flex items-center gap-1 text-gray-700 font-semibold hover:text-green-600"
           >
             <Tag className="h-5 w-5" />

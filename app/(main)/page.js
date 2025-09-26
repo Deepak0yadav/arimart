@@ -69,7 +69,7 @@ function Home() {
   ];
 
   return (
-    <div className="min-h-screen pb-16 pt-16">
+    <div className="min-h-screen pb-16 ">
       {/* Banner Slider */}
       <div className="w-full mt-5">
         <AutoSlider images={banners} interval={3000} />
