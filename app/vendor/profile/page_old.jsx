@@ -1,6 +1,15 @@
 export default function VendorProfile() {
   return (
     <div>
+      <h2 className="text-2xl font-semibent mb-6">Profile</h2>ileBackButton from "../../../components/MobileBackButton";
+
+export default function VendorProfile() {
+  return (
+    <div>
+      <MobileBackButton />
+      <h2 className="text-2xl font-semibold mb-6">Profile</h2>rt default function VendorProfile() {
+  return (
+    <div>
       <h2 className="text-2xl font-semibold mb-6">Profile</h2>
       <div className="bg-white rounded shadow p-6 max-w-lg">
         <form className="space-y-4">

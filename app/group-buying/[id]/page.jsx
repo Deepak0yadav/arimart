@@ -1,5 +1,6 @@
 import React from "react";
 import GroupCard from "../../../components/groupbuying/GroupCard";
+import MobileBackButton from "../../../components/MobileBackButton";
 
 // Mock single group (in real app, fetch from API)
 const mockGroup = {
@@ -21,6 +22,7 @@ export default function GroupPage({ params }) {
 
   return (
     <div className="container mx-auto p-6">
+      <MobileBackButton />
       <h2 className="text-2xl font-bold mb-4">Group Details</h2>
       <GroupCard group={mockGroup} />
     </div>

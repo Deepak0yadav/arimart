@@ -4,10 +4,10 @@ import Footer from "@/components/Footer";
 
 export default function MainLayout({ children }) {
   return (
-    <>
+    <div className="min-h-screen bg-white">
       <Navbar />
-      <main className="px-2 sm:px-2 lg:px-4 pt-16">{children}</main>
+      <main className="pt-16 pb-16 bg-white">{children}</main>
       <Footer />
-    </>
+    </div>
   );
 }

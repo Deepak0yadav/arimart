@@ -8,7 +8,7 @@ export default function ProductsLayout({ children }) {
   return (
     <div className="flex flex-col min-h-screen bg-white">
       <Navbar />
-      <main className="flex-grow">{children}</main>
+      <main className="flex-grow pt-16 bg-white">{children}</main>
       <Footer />
     </div>
   );

@@ -63,16 +63,10 @@ export default function NavbarDesktop({ navitems }) {
             {userMenuOpen && (
               <div className="absolute text-2xl font-semibold right-0 top-full mt-1 w-40 rounded-md border bg-white shadow-lg z-50 overflow-hidden">
                 <Link
-                  href="/login"
+                  href="/auth"
                   className="block px-4 py-2 text-sm hover:bg-gray-100 whitespace-nowrap"
                   onClick={() => setUserMenuOpen(false)}>
                   Login
-                </Link>
-                <Link
-                  href="/register"
-                  className="block px-4 py-2 text-sm hover:bg-gray-100 whitespace-nowrap"
-                  onClick={() => setUserMenuOpen(false)}>
-                  Sign Up
                 </Link>
                 <Link
                   href="/orders"

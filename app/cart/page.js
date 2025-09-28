@@ -83,47 +83,53 @@ export default function CartPage() {
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Cart Items */}
-            <div className="lg:col-span-2 space-y-4">
-              <div className="space-y-4">
-                {cart.map((item) => (
-                  <CartItem
-                    key={item.id}
-                    item={item}
-                    onRemove={removeFromCart}
-                    onUpdateQuantity={updateQuantity}
-                    onWishlist={moveToWishlist}
-                  />
-                ))}
+            <div className="lg:col-span-2">
+              <div className="bg-white rounded-lg shadow-sm border mb-4">
+                <h2 className="text-lg font-semibold p-4 border-b border-gray-200" style={{color: '#CB7F32'}}>
+                  Shopping Cart ({cart.length} {cart.length === 1 ? 'item' : 'items'})
+                </h2>
+                
+                <div>
+                  {cart.map((item) => (
+                    <CartItem
+                      key={item.id}
+                      item={item}
+                      onRemove={removeFromCart}
+                      onUpdateQuantity={updateQuantity}
+                      onWishlist={moveToWishlist}
+                    />
+                  ))}
+                </div>
               </div>
 
               {/* Delivery Info */}
-              <div className="bg-white rounded-xl shadow-sm border p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <Truck size={20} style={{ color: '#0A7E36' }} />
-                  <h3 className="font-semibold">Delivery Information</h3>
+              <div className="bg-white rounded-lg shadow-sm border p-4 mt-4">
+                <div className="flex items-center gap-3 mb-3">
+                  <Truck size={18} style={{ color: '#0A7E36' }} />
+                  <h3 className="font-medium">Delivery Information</h3>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
                   <div className="flex items-center gap-2">
-                    <Package size={16} className="text-blue-500" />
+                    <Package size={14} className="text-blue-500" />
                     <div>
                       <p className="font-medium">Free Delivery</p>
-                      <p className="text-gray-600">On orders above ₹299</p>
+                      <p className="text-gray-600 text-xs">On orders above ₹299</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Truck size={16} className="text-green-500" />
+                    <Truck size={14} className="text-green-500" />
                     <div>
                       <p className="font-medium">Fast Shipping</p>
-                      <p className="text-gray-600">2-4 business days</p>
+                      <p className="text-gray-600 text-xs">2-4 business days</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Shield size={16} className="text-purple-500" />
+                    <Shield size={14} className="text-purple-500" />
                     <div>
                       <p className="font-medium">Easy Returns</p>
-                      <p className="text-gray-600">30-day return policy</p>
+                      <p className="text-gray-600 text-xs">30-day return policy</p>
                     </div>
                   </div>
                 </div>
@@ -132,37 +138,42 @@ export default function CartPage() {
 
             {/* Cart Summary */}
             <div className="lg:col-span-1">
-              <div className="bg-white rounded-xl shadow-sm border p-6 sticky top-24">
-                <h3 className="text-lg font-semibold mb-4">Order Summary</h3>
-                <div className="space-y-3 text-sm">
+              <div className="bg-white rounded-lg shadow-sm border p-4 sticky top-24">
+                <h3 className="text-lg font-medium mb-4" style={{color: '#CB7F32'}}>Price Details</h3>
+                <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
-                    <span>Subtotal ({cart.length} items):</span>
+                    <span>Price ({cart.length} {cart.length === 1 ? 'item' : 'items'}):</span>
                     <span>₹{subtotal.toLocaleString()}</span>
                   </div>
                   {totalSavings > 0 && (
                     <div className="flex justify-between text-green-600">
-                      <span>Total Savings:</span>
+                      <span>Discount:</span>
                       <span>-₹{totalSavings.toLocaleString()}</span>
                     </div>
                   )}
                   <div className="flex justify-between">
                     <span className="flex items-center gap-1">
-                      Delivery Fee
+                      Delivery Charges
                       {deliveryFee === 0 && (
                         <span className="text-xs text-white px-1 py-0.5 rounded bg-green-600">FREE</span>
                       )}
                     </span>
-                    <span>{deliveryFee === 0 ? 'FREE' : `₹${deliveryFee}`}</span>
+                    <span className={deliveryFee === 0 ? 'text-green-600' : ''}>{deliveryFee === 0 ? 'FREE' : `₹${deliveryFee}`}</span>
                   </div>
-                  <div className="border-t pt-3 flex justify-between font-semibold text-lg">
+                  <div className="border-t pt-2 flex justify-between font-bold text-base">
                     <span>Total Amount:</span>
                     <span>₹{finalTotal.toLocaleString()}</span>
                   </div>
+                  {totalSavings > 0 && (
+                    <div className="text-green-600 text-sm font-medium">
+                      You will save ₹{totalSavings.toLocaleString()} on this order
+                    </div>
+                  )}
                 </div>
 
                 {subtotal < 299 && (
-                  <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mt-4 text-sm">
-                    <p className="text-yellow-800">
+                  <div className="bg-orange-50 border border-orange-200 rounded-lg p-3 mt-3 text-sm">
+                    <p className="text-orange-800">
                       Add items worth ₹{(299 - subtotal).toLocaleString()} more to get free delivery!
                     </p>
                   </div>
@@ -170,7 +181,7 @@ export default function CartPage() {
 
                 <button
                   onClick={handleCheckout}
-                  className="w-full text-white font-semibold py-4 px-6 rounded-lg mt-6 transition-all duration-200 flex items-center justify-center gap-2"
+                  className="w-full text-white font-medium py-3 px-6 rounded-lg mt-4 transition-all duration-200 flex items-center justify-center gap-2"
                   style={{ backgroundColor: '#0A7E36' }}
                   onMouseEnter={(e) => {
                     e.target.style.backgroundColor = 'rgba(10,126,54,0.9)';
@@ -181,12 +192,12 @@ export default function CartPage() {
                     e.target.style.transform = 'translateY(0)';
                   }}
                 >
-                  <CreditCard size={18} /> Proceed to Checkout
+                  <CreditCard size={16} /> PLACE ORDER
                 </button>
 
-                <div className="flex items-center justify-center gap-4 mt-4 pt-4 border-t text-xs text-gray-500">
+                <div className="flex items-center justify-center gap-4 mt-3 pt-3 border-t text-xs text-gray-500">
                   <div className="flex items-center gap-1">
-                    <Shield size={12} /> Secure Payment
+                    <Shield size={12} /> Secure
                   </div>
                   <div className="flex items-center gap-1">
                     <Truck size={12} /> Fast Delivery

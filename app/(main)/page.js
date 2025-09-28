@@ -69,50 +69,52 @@ function Home() {
   ];
 
   return (
-    <div className="min-h-screen pb-16 ">
+    <div className="min-h-screen">
       {/* Banner Slider */}
-      <div className="w-full mt-5">
+      <div className="w-full">
         <AutoSlider images={banners} interval={3000} />
       </div>
 
       {/* Sections */}
-      <ShopByCategory/>
+      <div className="w-full">
+        <ShopByCategory/>
 
-      <ProductSection
-        title="Grocery"
-        products={freshProducts}
-        seeMoreLink="/categories/grocery"
-      />
+        <ProductSection
+          title="Grocery"
+          products={freshProducts}
+          seeMoreLink="/categories/grocery"
+        />
 
-      <ProductSection
-        title="Mobile Accessories"
-        products={mobileAccessories}
-        seeMoreLink="/categories/mobiles"
-      />
+        <ProductSection
+          title="Mobile Accessories"
+          products={mobileAccessories}
+          seeMoreLink="/categories/mobiles"
+        />
 
-      <ProductSection
-        title="Electronics"
-        products={electronics}
-        seeMoreLink="/categories/electronics"
-      />
+        <ProductSection
+          title="Electronics"
+          products={electronics}
+          seeMoreLink="/categories/electronics"
+        />
 
-      <ProductSection
-        title="Home & Kitchen"
-        products={homeKitchen}
-        seeMoreLink="/categories/home-kitchen"
-      />
+        <ProductSection
+          title="Home & Kitchen"
+          products={homeKitchen}
+          seeMoreLink="/categories/home-kitchen"
+        />
 
-      <ProductSection
-        title="Fashion"
-        products={fashion}
-        seeMoreLink="/categories/fashion"
-      />
+        <ProductSection
+          title="Fashion"
+          products={fashion}
+          seeMoreLink="/categories/fashion"
+        />
 
-      <ProductSection
-        title="Toys"
-        products={toys}
-        seeMoreLink="/categories/toys"
-      />
+        <ProductSection
+          title="Toys"
+          products={toys}
+          seeMoreLink="/categories/toys"
+        />
+      </div>
 
       <BottomNavbar />
     </div>

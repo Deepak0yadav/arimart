@@ -25,7 +25,7 @@ export default function NavbarMobile({ navitems }) {
           </Link>
 
           {/* User */}
-          <Link href="/login">
+          <Link href="/auth">
             <User className="h-6 w-6 text-gray-800" />
           </Link>
         </div>
@@ -37,7 +37,7 @@ export default function NavbarMobile({ navitems }) {
       </div>
 
       {/* Mobile Navigation Links */}
-      <div className="flex overflow-x-auto gap-4 px-4 py-3">
+      <div className="flex overflow-x-auto gap-4 px-4 py-3 scrollbar-hide">
         {navitems.map((item) => (
           <Link
             key={item.name}

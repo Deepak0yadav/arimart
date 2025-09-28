@@ -54,22 +54,24 @@ export default function ArimartGroupBuying() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-white border-b">
-        <div className="container mx-auto px-4 py-6">
-          <h1 className="text-2xl font-bold text-gray-900 text-center">
-            Group Deals
-          </h1>
-          <p className="text-gray-600 text-center mt-1">
-            Join with friends and save more
-          </p>
+      <div className="bg-white border-b border-gray-200 sticky top-0 z-40">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-6">
+          <div className="text-center">
+            <h1 className="text-xl md:text-2xl font-bold text-gray-900">
+              Group Deals
+            </h1>
+            <p className="text-sm md:text-base text-gray-600 mt-1">
+              Join with friends and save more
+            </p>
+          </div>
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-6 max-w-4xl">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-6">
         <JoinGroupForm onJoin={handleJoin} />
 
         {/* Groups Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {groups.map((group) => (
             <GroupCard
               key={group.id}
