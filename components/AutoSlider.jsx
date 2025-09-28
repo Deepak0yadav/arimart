@@ -14,7 +14,7 @@ export default function AutoSlider({ images, interval = 3000 }) {
   }, [images.length, interval]);
 
   return (
-    <div className="w-full bg-white py-4">
+    <div className="w-full bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative w-full overflow-hidden shadow-lg rounded-xl z-40">
           {/* Slides */}

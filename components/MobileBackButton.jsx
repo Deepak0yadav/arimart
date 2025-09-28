@@ -2,32 +2,42 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ArrowLeft } from "lucide-react";
 
 export default function MobileBackButton() {
   const router = useRouter();
-  const [canGoBack, setCanGoBack] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
+  // Detect mobile screen
   useEffect(() => {
-    // Check if there's history to go back to
-    setCanGoBack(window.history.length > 1);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768); // Tailwind md breakpoint
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleBack = () => {
-    if (canGoBack) {
-      router.back();
-    } else {
-      router.push("/");
-    }
-  };
+  if (!isMobile) return null;
 
   return (
     <button
-      onClick={handleBack}
-      className="md:hidden fixed top-4 left-4 z-50 p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow"
-      aria-label="Go back"
-    >
-      <ArrowLeft className="h-6 w-6 text-gray-700" />
+      onClick={() => router.back()}
+  className="bg-green-600 text-white p-2 rounded-full shadow-md hover:bg-green-700 transition flex items-center justify-center h-10 w-10 self-center"
+  style={{marginTop: 0}}>
+      {/* Simple left arrow icon */}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-5 w-5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor">
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M15 19l-7-7 7-7"
+        />
+      </svg>
     </button>
   );
 }

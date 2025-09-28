@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import NavDropdown from "./NavDropdown";
+import NotificationDropdown from "./NotificationDropdown";
 import { User, ShoppingCart, Tag } from "lucide-react"; // Added Tag
 import Link from "next/link";
 import SearchBarTrigger from "../SearchBarTrigger";
@@ -27,12 +28,12 @@ export default function NavbarDesktop({ navitems }) {
   }, [userMenuOpen]);
 
   return (
-    <nav className="hidden md:block sticky top-0 z-50 w-full border-b bg-white shadow-sm">
+    <nav className="hidden md:block sticky top-0 z-50 w-full border-b bg-green-50 shadow-sm border-green-100">
       <div className="mx-auto flex h-16 max-w-7xl items-center px-6 gap-6">
         {/* Logo */}
         <Link
           href="/"
-          className="text-2xl font-extrabold text-green-600">
+          className="text-2xl font-extrabold text-green-600 hover:text-green-700 transition-colors">
           Arimart
         </Link>
 
@@ -42,14 +43,17 @@ export default function NavbarDesktop({ navitems }) {
         </div>
 
         {/* Right Menu */}
-        <div className="flex items-center gap-6 relative">
+        <div className="flex items-center gap-4 relative">
           {/* Deals */}
           <Link
             href="/group-buying"
-            className="flex items-center gap-1 text-gray-700 font-semibold hover:text-green-600">
+            className="flex items-center gap-1 text-gray-800 font-semibold hover:text-gray-600 transition-colors">
             <Tag className="h-5 w-5" />
             <span>Group Deals</span>
           </Link>
+
+          {/* Notifications */}
+          <NotificationDropdown />
 
           {/* User */}
           <div
@@ -57,7 +61,7 @@ export default function NavbarDesktop({ navitems }) {
             ref={userMenuRef}>
             <button
               onClick={() => setUserMenuOpen((prev) => !prev)}
-              className="p-2 rounded-full hover:bg-gray-100">
+              className="p-2 rounded-full hover:bg-gray-100 transition-colors">
               <User className="h-7 w-7 text-gray-800" />
             </button>
             {userMenuOpen && (
@@ -81,7 +85,7 @@ export default function NavbarDesktop({ navitems }) {
           {/* Cart */}
           <Link
             href="/cart"
-            className="relative p-2 rounded-full hover:bg-gray-100">
+            className="relative p-2 rounded-full hover:bg-gray-100 transition-colors">
             <ShoppingCart className="h-7 w-7 text-gray-800" />
             <span className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center rounded-full bg-red-500 text-[11px] font-bold text-white">
               2
@@ -90,8 +94,8 @@ export default function NavbarDesktop({ navitems }) {
         </div>
       </div>
 
-      {/* Navigation Categories */}
-      <div className="flex items-center gap-6 px-6 py-3 justify-center relative z-40  bg-white">
+      {/* Navigation Categories - Merged seamlessly */}
+      <div className="flex items-center gap-6 px-6 py-3 justify-center relative z-40 bg-green-50">
         {navitems.map((item) => (
           <NavDropdown
             key={item.name}

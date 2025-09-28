@@ -60,16 +60,18 @@ export default function SearchPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <MobileBackButton />
       <div className="max-w-4xl mx-auto px-4 py-2 md:py-4">
-        {/* Search Header */}
-        <div className="bg-white rounded-lg shadow-sm p-3 md:p-4 mb-3 md:mb-4">
-          <SearchInput
-            searchQuery={searchQuery}
-            setSearchQuery={setSearchQuery}
-            onSearch={handleSearch}
-            onClear={handleClearSearch}
-          />
+        {/* Search Header with Back Button */}
+        <div className="flex items-center gap-2 mb-3 md:mb-4">
+          <MobileBackButton />
+          <div className="flex-1 bg-white rounded-lg shadow-sm p-3 md:p-4">
+            <SearchInput
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+              onSearch={handleSearch}
+              onClear={handleClearSearch}
+            />
+          </div>
         </div>
 
         {/* Search Content */}
