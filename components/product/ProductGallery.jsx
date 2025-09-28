@@ -6,17 +6,15 @@ export default function ProductGallery({
   selectedImageIndex,
   setSelectedImageIndex,
 }) {
-  const images = product.images || []; // fallback in case images is undefined
+  const images = product.images || [];
 
   return (
-    <div className="space-y-4">
-      <div className="relative bg-white rounded-xl shadow-lg overflow-hidden">
-        <Image
+    <div className="md:w-1/2">
+      <div className="aspect-square bg-gray-100 relative">
+        <img
           src={images[selectedImageIndex]}
           alt={product.name}
-          className="w-full h-[500px] object-cover"
-          width={500}
-          height={500}
+          className="w-full h-full object-cover"
         />
         {!product.inStock && (
           <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
@@ -27,24 +25,22 @@ export default function ProductGallery({
         )}
       </div>
 
-      {/* Thumbnails */}
+      {/* Thumbnails - Only show if multiple images */}
       {images.length > 1 && (
-        <div className="flex gap-3 overflow-x-auto pb-2">
+        <div className="flex gap-2 mt-3 px-4 pb-4 overflow-x-auto">
           {images.map((image, index) => (
             <button
               key={index}
               onClick={() => setSelectedImageIndex(index)}
-              className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 ${
+              className={`flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 ${
                 selectedImageIndex === index
-                  ? "border-orange-600"
+                  ? "border-green-500"
                   : "border-gray-200"
               }`}>
-              <Image
+              <img
                 src={image}
                 alt={`View ${index + 1}`}
                 className="w-full h-full object-cover"
-                width={80}
-                height={80}
               />
             </button>
           ))}
