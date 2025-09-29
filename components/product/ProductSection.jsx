@@ -15,7 +15,7 @@ export default function ProductSection({ title, products, seeMoreLink }) {
         </h2>
         <Link
           href={"/products/all"}
-          className="text-sm text-green-600 font-semibold hover:text-green-700 transition-colors flex items-center gap-1 hover:gap-2 transition-all duration-200">
+          className="text-sm text-green-600 font-semibold hover:text-green-700 transition-colors flex items-center gap-1 hover:gap-2 duration-200">
           See All
         </Link>
       </div>
