@@ -14,52 +14,56 @@ export default function AutoSlider({ images, interval = 3000 }) {
   }, [images.length, interval]);
 
   return (
-    <div className="relative w-full overflow-hidden shadow-md z-40">
-      {/* Slides */}
-      <div
-        className="flex transition-transform duration-700 ease-in-out"
-        style={{ transform: `translateX(-${current * 100}%)` }}>
-        {images.map((src, index) => (
+    <div className="w-full bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative w-full overflow-hidden shadow-lg rounded-xl z-40">
+          {/* Slides */}
           <div
-            key={index}
-            className="w-full flex-shrink-0">
-            <img
-              src={src}
-              alt={`Slide ${index}`}
-              className="w-full h-48 sm:h-64 md:h-80 lg:h-96 object-cover"
-            />
+            className="flex transition-transform duration-700 ease-in-out"
+            style={{ transform: `translateX(-${current * 100}%)` }}>
+            {images.map((src, index) => (
+              <div
+                key={index}
+                className="w-full flex-shrink-0">
+                <img
+                  src={src}
+                  alt={`Slide ${index}`}
+                  className="w-full h-48 sm:h-64 md:h-80 lg:h-96 object-cover"
+                />
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
 
-      {/* Dots */}
-      <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex gap-2">
-        {images.map((_, i) => (
+          {/* Dots */}
+          <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex gap-2">
+            {images.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrent(i)}
+                className={`w-2 h-2 rounded-full transition ${
+                  current === i ? "bg-white" : "bg-gray-400"
+                }`}
+              />
+            ))}
+          </div>
+
+          {/* Prev Button */}
           <button
-            key={i}
-            onClick={() => setCurrent(i)}
-            className={`w-2 h-2 rounded-full transition ${
-              current === i ? "bg-white" : "bg-gray-400"
-            }`}
-          />
-        ))}
+            onClick={() =>
+              setCurrent((prev) => (prev - 1 + images.length) % images.length)
+            }
+            className="absolute top-1/2 left-4 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/60 transition-colors">
+            ❮
+          </button>
+
+          {/* Next Button */}
+          <button
+            onClick={() => setCurrent((prev) => (prev + 1) % images.length)}
+            className="absolute top-1/2 right-4 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/60 transition-colors">
+            ❯
+          </button>
+        </div>
       </div>
-
-      {/* Prev Button */}
-      <button
-        onClick={() =>
-          setCurrent((prev) => (prev - 1 + images.length) % images.length)
-        }
-        className="absolute top-1/2 left-4 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full">
-        ❮
-      </button>
-
-      {/* Next Button */}
-      <button
-        onClick={() => setCurrent((prev) => (prev + 1) % images.length)}
-        className="absolute top-1/2 right-4 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full">
-        ❯
-      </button>
     </div>
   );
 }

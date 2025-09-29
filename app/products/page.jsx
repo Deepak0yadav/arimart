@@ -3,6 +3,7 @@
 import ProductActions from "@/components/product/ProductActions";
 import ProductGallery from "@/components/product/ProductGallery";
 import ProductTabs from "@/components/product/ProductTabs";
+import MobileBackButton from "@/components/MobileBackButton";
 import { useState } from "react";
 
 
@@ -51,6 +52,7 @@ export default function ProductDetails() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <MobileBackButton />
       <div className="max-w-4xl mx-auto px-4 py-6">
         {/* Main Product Section */}
         <div className="bg-white rounded-lg shadow-sm overflow-hidden mb-6">
@@ -72,6 +74,8 @@ export default function ProductDetails() {
             />
           </div>
         </div>
+
+
 
         {/* Tabs */}
         <ProductTabs

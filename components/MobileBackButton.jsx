@@ -22,7 +22,8 @@ export default function MobileBackButton() {
   return (
     <button
       onClick={() => router.back()}
-      className="fixed top-4 left-4 z-50 bg-green-600 text-white p-2 rounded-full shadow-md hover:bg-green-700 transition">
+  className="bg-green-600 text-white p-2 rounded-full shadow-md hover:bg-green-700 transition flex items-center justify-center h-10 w-10 self-center"
+  style={{marginTop: 0}}>
       {/* Simple left arrow icon */}
       <svg
         xmlns="http://www.w3.org/2000/svg"

@@ -8,7 +8,7 @@ export default function BottomNavbar() {
     { name: "Search", href: "/search", icon: Search },
     { name: "Categories", href: "/categories", icon: Menu },
     { name: "Cart", href: "/cart", icon: ShoppingCart },
-    { name: "Account", href: "/login", icon: User },
+    { name: "Account", href: "/auth", icon: User },
   ];
 
   return (

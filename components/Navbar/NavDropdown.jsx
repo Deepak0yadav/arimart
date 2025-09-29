@@ -11,7 +11,7 @@ export default function NavDropdown({ item, subcategories }) {
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}>
       {/* Main Button */}
-      <button className="flex items-center gap-1 font-medium hover:text-green-600">
+      <button className="flex items-center gap-1 font-medium text-gray-800 hover:text-gray-600">
         <item.icon className="w-4 h-4" />
         {item.name}
       </button>
