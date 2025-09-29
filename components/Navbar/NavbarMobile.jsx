@@ -40,18 +40,20 @@ export default function NavbarMobile({ navitems }) {
         <SearchBarTrigger />
       </div>
 
-      {/* Mobile Navigation Links - Merged seamlessly */}
-      <div className="flex overflow-x-auto gap-4 px-4 py-3 scrollbar-hide bg-green-50">
-        {navitems.map((item) => (
-          <Link
-            key={item.name}
-            href={`categories/${item.link}`}
-            className="flex items-center gap-1 font-medium text-gray-800 hover:text-gray-600 whitespace-nowrap transition-colors">
-            <item.icon className="w-4 h-4" />
-            {item.name}
-          </Link>
-        ))}
-      </div>
+      {/* Mobile Navigation Links - Only show if navitems exist */}
+      {navitems.length > 0 && (
+        <div className="flex overflow-x-auto gap-4 px-4 py-3 scrollbar-hide bg-green-50">
+          {navitems.map((item) => (
+            <Link
+              key={item.name}
+              href={`categories/${item.link}`}
+              className="flex items-center gap-1 font-medium text-gray-800 hover:text-gray-600 whitespace-nowrap transition-colors">
+              <item.icon className="w-4 h-4" />
+              {item.name}
+            </Link>
+          ))}
+        </div>
+      )}
     </nav>
   );
 }

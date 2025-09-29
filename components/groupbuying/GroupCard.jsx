@@ -1,6 +1,6 @@
 import { Clock, ShoppingCart, Users } from "lucide-react";
 
-export default function GroupCard({ group }) {
+export default function GroupCard({ group, joined }) {
   const membersCount = group.members?.length || 0;
   const isActive = membersCount >= group.minMembers;
   const progressPercentage = Math.min((membersCount / group.minMembers) * 100, 100);
@@ -63,10 +63,17 @@ export default function GroupCard({ group }) {
         </div>
 
         {/* Actions */}
-        <button className="w-full bg-green-600 text-white py-2.5 md:py-3 px-4 rounded-lg text-sm md:text-base font-semibold hover:bg-green-700 transition-colors flex items-center justify-center gap-2">
-          <ShoppingCart className="w-4 h-4" />
-          {isActive ? "Buy Now" : "Join Group"}
-        </button>
+        {joined ? (
+          <button className="w-full bg-green-600 text-white py-2.5 md:py-3 px-4 rounded-lg text-sm md:text-base font-semibold hover:bg-green-700 transition-colors flex items-center justify-center gap-2">
+            <ShoppingCart className="w-4 h-4" />
+            Buy Now
+          </button>
+        ) : (
+          <button className="w-full bg-green-600 text-white py-2.5 md:py-3 px-4 rounded-lg text-sm md:text-base font-semibold hover:bg-green-700 transition-colors flex items-center justify-center gap-2">
+            <ShoppingCart className="w-4 h-4" />
+            {isActive ? "Buy Now" : "Join Group"}
+          </button>
+        )}
       </div>
     </div>
   );

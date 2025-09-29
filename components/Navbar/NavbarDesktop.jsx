@@ -94,16 +94,18 @@ export default function NavbarDesktop({ navitems }) {
         </div>
       </div>
 
-      {/* Navigation Categories - Merged seamlessly */}
-      <div className="flex items-center gap-6 px-6 py-3 justify-center relative z-40 bg-green-50">
-        {navitems.map((item) => (
-          <NavDropdown
-            key={item.name}
-            item={item}
-            subcategories={item.subs}
-          />
-        ))}
-      </div>
+      {/* Navigation Categories - Only show if navitems exist */}
+      {navitems.length > 0 && (
+        <div className="flex items-center gap-6 px-6 py-3 justify-center relative z-40 bg-green-50">
+          {navitems.map((item) => (
+            <NavDropdown
+              key={item.name}
+              item={item}
+              subcategories={item.subs}
+            />
+          ))}
+        </div>
+      )}
     </nav>
   );
 }

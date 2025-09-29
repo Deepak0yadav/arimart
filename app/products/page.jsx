@@ -75,6 +75,8 @@ export default function ProductDetails() {
           </div>
         </div>
 
+
+
         {/* Tabs */}
         <ProductTabs
           product={product}

@@ -14,63 +14,43 @@ export default function VendorProducts() {
   }, []);
 
   return (
-    <div>
+    <div className="min-h-[60vh] bg-gradient-to-br from-green-100 to-green-50 p-6 rounded-xl shadow">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-semibold">Products</h2>
+        <h2 className="text-2xl font-bold text-green-800">Products</h2>
         <Link
           href="/vendor/products/new"
-          className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+          className="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg shadow hover:bg-green-700">
           <Plus className="w-4 h-4" /> Add Product
         </Link>
       </div>
-
-      <div className="overflow-x-auto bg-white rounded shadow">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
+      <div className="overflow-x-auto">
+        <table className="min-w-full bg-white rounded-xl shadow divide-y divide-green-100">
+          <thead className="bg-green-50">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                ID
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                Name
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                Price
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                Stock
-              </th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">
-                Actions
-              </th>
+              <th className="px-6 py-3 text-left text-xs font-bold text-green-700 uppercase">ID</th>
+              <th className="px-6 py-3 text-left text-xs font-bold text-green-700 uppercase">Name</th>
+              <th className="px-6 py-3 text-left text-xs font-bold text-green-700 uppercase">Price</th>
+              <th className="px-6 py-3 text-left text-xs font-bold text-green-700 uppercase">Stock</th>
+              <th className="px-6 py-3 text-right text-xs font-bold text-green-700 uppercase">Actions</th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
+          <tbody>
             {products.map((p) => (
-              <tr key={p.id}>
-                <td className="px-6 py-4">{p.id}</td>
-                <td className="px-6 py-4">{p.name}</td>
-                <td className="px-6 py-4">{p.price}</td>
-                <td className="px-6 py-4">{p.stock}</td>
+              <tr key={p.id} className="hover:bg-green-50 transition">
+                <td className="px-6 py-4 font-medium text-green-900">{p.id}</td>
+                <td className="px-6 py-4 font-medium text-green-900">{p.name}</td>
+                <td className="px-6 py-4 font-medium text-green-900">{p.price}</td>
+                <td className="px-6 py-4 font-medium text-green-900">{p.stock}</td>
                 <td className="px-6 py-4 flex justify-end gap-2">
-                  <button className="text-blue-600 hover:text-blue-800 flex items-center gap-1">
-                    <Edit className="w-4 h-4" /> Edit
+                  <button className="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 transition flex items-center gap-1">
+                    <Edit className="w-4 h-4" />
                   </button>
-                  <button className="text-red-600 hover:text-red-800 flex items-center gap-1">
-                    <Trash2 className="w-4 h-4" /> Delete
+                  <button className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition flex items-center gap-1">
+                    <Trash2 className="w-4 h-4" />
                   </button>
                 </td>
               </tr>
             ))}
-            {products.length === 0 && (
-              <tr>
-                <td
-                  colSpan={5}
-                  className="text-center py-4 text-gray-500">
-                  No products found.
-                </td>
-              </tr>
-            )}
           </tbody>
         </table>
       </div>

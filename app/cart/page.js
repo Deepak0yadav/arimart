@@ -6,6 +6,7 @@ import { CreditCard, Package, Shield, ShoppingCart, Truck } from "lucide-react";
 import { useState } from "react";
 
 export default function CartPage() {
+  const [tab, setTab] = useState("mycart");
   const [cart, setCart] = useState([
     {
       id: 1,
@@ -35,10 +36,24 @@ export default function CartPage() {
       image: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=100&h=100&fit=crop"
     },
   ]);
+  // Example group cart
+  const [groupCart, setGroupCart] = useState([
+    {
+      id: 101,
+      name: "Potato White 1kg",
+      price: 38.25,
+      originalPrice: 45.00,
+      quantity: 2,
+      variant: "1kg pack",
+      image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=100&h=100&fit=crop"
+    }
+  ]);
 
   // Handlers
   const removeFromCart = (id) => setCart(cart.filter((item) => item.id !== id));
   const updateQuantity = (id, newQuantity) => setCart(cart.map(item => item.id === id ? { ...item, quantity: newQuantity } : item));
+  const removeFromGroupCart = (id) => setGroupCart(groupCart.filter((item) => item.id !== id));
+  const updateGroupQuantity = (id, newQuantity) => setGroupCart(groupCart.map(item => item.id === id ? { ...item, quantity: newQuantity } : item));
   const moveToWishlist = (item) => alert(`${item.name} moved to wishlist!`);
   const handleCheckout = () => alert('Proceeding to checkout...');
   const handleContinueShopping = () => alert('Navigating to products...');
@@ -50,14 +65,38 @@ export default function CartPage() {
   const deliveryFee = subtotal >= 299 ? 0 : 40;
   const finalTotal = subtotal + deliveryFee;
 
+  const groupSubtotal = groupCart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const groupOriginalTotal = groupCart.reduce((sum, item) => sum + ((item.originalPrice || item.price) * item.quantity), 0);
+  const groupTotalSavings = groupOriginalTotal - groupSubtotal;
+  const groupDeliveryFee = groupSubtotal >= 299 ? 0 : 40;
+  const groupFinalTotal = groupSubtotal + groupDeliveryFee;
+
   return (
     <div className="min-h-screen bg-gray-50 relative">
       {/* Navbar */}
       <Navbar />
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 py-8 pt-20">
-        {cart.length === 0 ? (
+      <div className="max-w-7xl mx-auto px-4 py-8 pt-32 md:pt-20">
+        {/* Tabs */}
+        <div className="flex gap-8 border-b mb-6">
+          <button
+            className={`pb-2 font-semibold text-lg border-b-2 transition-colors ${tab === "mycart" ? "border-green-600 text-green-700" : "border-transparent text-gray-600"}`}
+            onClick={() => setTab("mycart")}
+          >
+            My Cart
+          </button>
+          <button
+            className={`pb-2 font-semibold text-lg border-b-2 transition-colors ${tab === "groupcart" ? "border-green-600 text-green-700" : "border-transparent text-gray-600"}`}
+            onClick={() => setTab("groupcart")}
+          >
+            Group Cart
+          </button>
+        </div>
+
+        {/* Tab Content */}
+        {tab === "mycart" ? (
+          // ...existing my cart content...
           <div className="text-center py-16">
             <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-gray-100 flex items-center justify-center">
               <ShoppingCart size={32} className="text-gray-400" />
@@ -67,19 +106,11 @@ export default function CartPage() {
               Looks like you haven&apos;t added any items to your cart yet.
             </p>
             <button
-              onClick={handleContinueShopping}
-              className="text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200"
-              style={{ backgroundColor: '#CB7F32' }}
-              onMouseEnter={(e) => {
-                e.target.style.backgroundColor = 'rgba(203,127,50,0.9)';
-                e.target.style.transform = 'translateY(-1px)';
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.backgroundColor = '#CB7F32';
-                e.target.style.transform = 'translateY(0)';
-              }}
+              onClick={() => window.location.href = '/'}
+              className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg shadow transition-all duration-200"
+              style={{ boxShadow: '0 2px 8px rgba(10,126,54,0.08)' }}
             >
-              Start Shopping
+              Continue Shopping
             </button>
           </div>
         ) : (

@@ -34,8 +34,6 @@ export default function AuthPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 lg:bg-white lg:flex lg:flex-row">
-      {/* Mobile Back Button */}
-      <MobileBackButton />
       
       {/* Left Panel - Green with Illustration */}
       <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-green-400 to-green-600 relative overflow-hidden">

@@ -46,6 +46,9 @@ const mockGroups = [
 
 export default function ArimartGroupBuying() {
   const [groups] = useState(mockGroups);
+  const [tab, setTab] = useState("all");
+  // Demo: joined groups are those with userId 'u1' in members
+  const joinedGroups = groups.filter(g => g.members.some(m => m.userId === "u1"));
 
   const handleJoin = (code) => {
     alert(`Joining group: ${code}`);
@@ -67,18 +70,56 @@ export default function ArimartGroupBuying() {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-6">
-        <JoinGroupForm onJoin={handleJoin} />
-
-        {/* Groups Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-          {groups.map((group) => (
-            <GroupCard
-              key={group.id}
-              group={group}
-            />
-          ))}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 pt-8 md:pt-6">
+        {/* Tabs */}
+        <div className="flex gap-8 border-b mb-6">
+          <button
+            className={`pb-2 font-semibold text-lg border-b-2 transition-colors ${tab === "all" ? "border-blue-500 text-blue-600" : "border-transparent text-gray-600"}`}
+            onClick={() => setTab("all")}
+          >
+            All Group Buys
+          </button>
+          <button
+            className={`pb-2 font-semibold text-lg border-b-2 transition-colors ${tab === "joined" ? "border-blue-500 text-blue-600" : "border-transparent text-gray-600"}`}
+            onClick={() => setTab("joined")}
+          >
+            My Joined Groups
+          </button>
         </div>
+
+        {/* Tab Content */}
+        {tab === "all" ? (
+          <>
+            <JoinGroupForm onJoin={handleJoin} />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mt-6">
+              {groups.map((group) => (
+                <GroupCard
+                  key={group.id}
+                  group={group}
+                  joined={false}
+                />
+              ))}
+            </div>
+          </>
+        ) : (
+          <div className="mt-6">
+            <h2 className="text-xl font-bold mb-2">My Joined Groups</h2>
+            <p className="text-gray-600 mb-4">Groups you've joined and their current status</p>
+            {joinedGroups.length === 0 ? (
+              <div className="bg-white rounded-lg p-6 text-center text-gray-500 shadow">You haven't joined any groups yet</div>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                {joinedGroups.map((group) => (
+                  <GroupCard
+                    key={group.id}
+                    group={group}
+                    joined={true}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

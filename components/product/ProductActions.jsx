@@ -78,30 +78,19 @@ export default function ProductActions({
       </div>
 
       {/* Buttons */}
-      <div className="space-y-3">
+      <div className="flex gap-4">
         <button
           onClick={handleAddToCart}
           disabled={!product.inStock}
-          className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-lg flex items-center justify-center gap-2 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed">
+          className="flex-1 bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-lg flex items-center justify-center gap-2 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed">
           <ShoppingCart size={18} />
           {product.inStock ? "Add to Cart" : "Out of Stock"}
         </button>
-
-        {product.inStock && (
-          <button
-            onClick={handleWishlist}
-            className={`w-full py-3 px-6 rounded-lg border font-medium flex items-center justify-center gap-2 transition-colors ${
-              isWishlisted
-                ? "bg-red-50 text-red-600 border-red-200"
-                : "hover:bg-gray-50 border-gray-300"
-            }`}>
-            <Heart
-              size={18}
-              fill={isWishlisted ? "currentColor" : "none"}
-            />
-            {isWishlisted ? "Wishlisted" : "Add to Wishlist"}
-          </button>
-        )}
+        <button
+          className="flex-1 bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-lg flex items-center justify-center shadow transition-colors"
+        >
+          Group Buy
+        </button>
       </div>
     </div>
   );

@@ -13,14 +13,11 @@ export default function ProductSection({ title, products, seeMoreLink }) {
           {title}
           <div className="absolute -bottom-1 left-0 w-12 h-0.5 bg-green-600 rounded-full"></div>
         </h2>
-        {seeMoreLink && (
-          <Link
-            href={seeMoreLink}
-            className="text-sm text-green-600 font-semibold hover:text-green-700 transition-colors flex items-center gap-1 hover:gap-2 transition-all duration-200">
-            See All
-            <span className="text-xs">→</span>
-          </Link>
-        )}
+        <Link
+          href={"/products/all"}
+          className="text-sm text-green-600 font-semibold hover:text-green-700 transition-colors flex items-center gap-1 hover:gap-2 transition-all duration-200">
+          See All
+        </Link>
       </div>
 
         {/* Mobile Scroll */}
