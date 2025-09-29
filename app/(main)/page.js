@@ -3,6 +3,7 @@ import AutoSlider from "@/components/AutoSlider";
 import BottomNavbar from "@/components/Navbar/NavbarBottom";
 import ProductSection from "@/components/product/ProductSection";
 import ShopByCategory from '@/components/ShopBycategory';
+import ProductFilter from '@/components/product/ProductFilter';
 
 function Home() {
   const banners = [
@@ -77,7 +78,9 @@ function Home() {
 
       {/* Sections */}
       <div className="w-full">
-        <ShopByCategory/>
+  <ShopByCategory/>
+
+  <ProductFilter />
 
         <ProductSection
           title="Grocery"

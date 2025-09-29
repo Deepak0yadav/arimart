@@ -36,7 +36,7 @@ export default function ProductCard({ product }) {
       </button>
 
       {/* Product Image */}
-      <div className="relative h-32 sm:h-36 lg:h-40 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden flex-shrink-0">
+  <div className="relative h-28 sm:h-36 lg:h-40 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden flex-shrink-0">
         <img
           src={
             product.image ||
@@ -49,15 +49,15 @@ export default function ProductCard({ product }) {
       </div>
 
       {/* Product Info */}
-      <div className="p-3 flex flex-col justify-between flex-1">
+      <div className="p-2 sm:p-3 flex flex-col justify-between flex-1">
         <h3 className="font-medium text-gray-900 text-sm sm:text-base line-clamp-2 mb-2 group-hover:text-gray-700 transition-colors">
           {product.name}
         </h3>
 
         <div className="flex items-center justify-between mt-auto">
           <div className="flex flex-col">
-            <span className="font-bold text-gray-900 text-base sm:text-lg">
-              ₹{product.price.toLocaleString()}
+            <span className="text-gray-800 text-sm md:text-base">
+              ₹{product?.price ? product.price.toLocaleString() : '-'}
             </span>
             {product.originalPrice && (
               <span className="text-xs text-gray-500 line-through">
@@ -70,6 +70,7 @@ export default function ProductCard({ product }) {
               e.stopPropagation();
               alert(`${product.name} added to cart!`);
             }}
+            aria-label={`Add ${product.name} to cart`}
             className="bg-green-600 text-white text-xs sm:text-sm font-semibold py-2 px-3 sm:px-4 rounded-lg hover:bg-green-700 hover:shadow-md transition-all duration-200 hover:scale-105 active:scale-95">
             Add
           </button>
