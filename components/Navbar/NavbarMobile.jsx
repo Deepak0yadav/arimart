@@ -29,7 +29,7 @@ export default function NavbarMobile({ navitems }) {
           <NotificationDropdown />
 
           {/* User */}
-          <Link href="/auth" className="p-1 rounded-full hover:bg-gray-100 transition-colors">
+          <Link href="/auth" className="p-2 rounded-full hover:bg-gray-100 transition-colors">
             <User className="h-5 w-5 text-gray-800" />
           </Link>
         </div>

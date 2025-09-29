@@ -64,7 +64,7 @@ export default function NotificationDropdown() {
         className="relative p-2 rounded-full hover:bg-gray-100 transition-colors"
         aria-label="Notifications"
       >
-        <Bell className="h-6 w-6 text-gray-800" />
+  <Bell className="h-5 w-5 text-gray-800" />
         {unreadCount > 0 && (
           <span className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center rounded-full bg-red-500 text-[11px] font-bold text-white">
             {unreadCount > 99 ? '99+' : unreadCount}
